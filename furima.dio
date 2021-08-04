@@ -29,10 +29,10 @@
                     <mxGeometry y="30" width="160" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="10" value="register" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="510" y="220" width="160" height="110" as="geometry"/>
+                    <mxGeometry x="510" y="210" width="160" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" value="purchased_log_id&#10;token&#10;address&#10;building_name&#10;telephone_number" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="10" vertex="1">
-                    <mxGeometry y="30" width="160" height="80" as="geometry"/>
+                <mxCell id="11" value="purchased_log_id&#10;token&#10;address&#10;city&#10;building_name&#10;telephone_number" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="10" vertex="1">
+                    <mxGeometry y="30" width="160" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="area" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
                     <mxGeometry x="570" y="380" width="120" height="60" as="geometry"/>

@@ -2,14 +2,14 @@
 
 | column                  | type                  | option                                     |
 |-------------------------|-----------------------|--------------------------------------------|
-| nickname                | string                | nill:false                                 |
-| email                   | string                | nill:false, unique: true                   |
-| encrypted_password      | string                | nill:false                                 |
-| first_name              | string                | nill:false                                 |
-| first_name_kana         | string                | nill:false, format: {with: /\A[ァ-ヶー]+\z/}|
-| last_name               | string                | nill:false                                 |
-| last_name_kana          | string                | nill:false, format: {with: /\A[ァ-ヶー]+\z/}|
-| birthday                | date                  | nill:false                                 |
+| nickname                | string                | null:false                                 |
+| email                   | string                | null:false, unique: true                   |
+| encrypted_password      | string                | null:false                                 |
+| first_name              | string                | null:false                                 |
+| first_name_kana         | string                | null:false                                 |
+| last_name               | string                | null:false                                 |
+| last_name_kana          | string                | null:false                                 |
+| birthday                | date                  | null:false                                 |
 
 ### association
 has_many :items
@@ -19,15 +19,15 @@ has_many :purchased_logs
 ## item
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| name                    | string                | nill:false                    |
-| explanation             | text                  | nill:false                    |
-| price                   | integer               | nill:false                    |
-| user                    | references            | nill:false, foreign_key:true  |
-| area_id                 | integer               | nill:false                    |
-| category_id             | integer               | nill:false                    |
-| status_id               | integer               | nill:false                    |
-| postage_id              | integer               | nill:false                    |
-| days_id                 | integer               | nill:false                    |
+| name                    | string                | null:false                    |
+| explanation             | text                  | null:false                    |
+| price                   | integer               | null:false                    |
+| user                    | references            | null:false, foreign_key:true  |
+| area_id                 | integer               | null:false                    |
+| category_id             | integer               | null:false                    |
+| status_id               | integer               | null:false                    |
+| postage_id              | integer               | null:false                    |
+| days_id                 | integer               | null:false                    |
 
 ### association
 belongs_to :user
@@ -42,8 +42,8 @@ belongs_to :days
 
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| user                    | references            | nill:false, foreign_key:true  |
-| item                    | references            | nill:false, foreign_key:true  |
+| user                    | references            | null:false, foreign_key:true  |
+| item                    | references            | null:false, foreign_key:true  |
 
 ### association
 belongs_to :user
@@ -54,12 +54,13 @@ has_one :register
 
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| purchased_log_id        | references            | nill:false, foreign_key:true  |
-| postal_code             | string                | nill:false                    |
-| address                 | string                | nill:false                    |
-| building_name           | string                | nill:false                    |
-| telephone_number        | string                | nill:false                    |
-| area_id                 | integer               | nill:false                    |
+| purchased_log_id        | references            | null:false, foreign_key:true  |
+| postal_code             | string                | null:false                    |
+| city                    | string                | null:false                    |
+| address                 | string                | null:false                    |
+| building_name           | string                |                               |
+| telephone_number        | string                | null:false                    |
+| area_id                 | integer               | null:false                    |
 
 ### association
 belongs_to :purchased_log
@@ -69,9 +70,9 @@ belongs_to :area
 
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| comment                 | text                  | nill:false                    |
-| user                    | references            | nill:false, foreign_key:true  |
-| item                    | references            | nill:false, foreign_key:true  |
+| comment                 | text                  | null:false                    |
+| user                    | references            | null:false, foreign_key:true  |
+| item                    | references            | null:false, foreign_key:true  |
 
 ### association
 belongs_to :user
@@ -80,7 +81,7 @@ belongs_to :item
 ## area
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| area_id                 | integer               | nill:false                    |
+| area_id                 | integer               | null:false                    |
 
 ### association
 has_many :items
@@ -89,7 +90,7 @@ has_many :registers
 ## category
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| category                | integer               | nill:false                    |
+| category                | integer               | null:false                    |
 
 ### association
 has_many :items
@@ -97,7 +98,7 @@ has_many :items
 ## status
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| status_id               | integer               | nill:false                    |
+| status_id               | integer               | null:false                    |
 
 ### association
 has_many :items
@@ -105,7 +106,7 @@ has_many :items
 ## postage
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| postage_id              | integer               | nill:false                    |
+| postage_id              | integer               | null:false                    |
 
 ### association
 has_many :items
@@ -113,7 +114,7 @@ has_many :items
 ## days
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| days_id                 | integer               | nill:false                    |
+| days_id                 | integer               | null:false                    |
 
 ### association
 has_many :items
