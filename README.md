@@ -32,11 +32,8 @@ has_many :purchased_logs
 ### association
 belongs_to :user
 has_many :comments
-belongs_to :area
-belongs_to :category
-belongs_to :status
-belongs_to :postage
-belongs_to :days
+has_many :purchased_log
+
 
 ## purchased_log
 
@@ -48,13 +45,13 @@ belongs_to :days
 ### association
 belongs_to :user
 belongs_to :item
-has_one :register
+
 
 ## register
 
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| purchased_log_id        | references            | null:false, foreign_key:true  |
+| purchased_log           | references            | null:false, foreign_key:true  |
 | postal_code             | string                | null:false                    |
 | city                    | string                | null:false                    |
 | address                 | string                | null:false                    |
@@ -64,7 +61,6 @@ has_one :register
 
 ### association
 belongs_to :purchased_log
-belongs_to :area
 
 ## comment
 
@@ -77,44 +73,3 @@ belongs_to :area
 ### association
 belongs_to :user
 belongs_to :item
-
-## area
-| column                  | type                  | option                        |
-|-------------------------|-----------------------|-------------------------------|
-| area_id                 | integer               | null:false                    |
-
-### association
-has_many :items
-has_many :registers
-
-## category
-| column                  | type                  | option                        |
-|-------------------------|-----------------------|-------------------------------|
-| category                | integer               | null:false                    |
-
-### association
-has_many :items
-
-## status
-| column                  | type                  | option                        |
-|-------------------------|-----------------------|-------------------------------|
-| status_id               | integer               | null:false                    |
-
-### association
-has_many :items
-
-## postage
-| column                  | type                  | option                        |
-|-------------------------|-----------------------|-------------------------------|
-| postage_id              | integer               | null:false                    |
-
-### association
-has_many :items
-
-## days
-| column                  | type                  | option                        |
-|-------------------------|-----------------------|-------------------------------|
-| days_id                 | integer               | null:false                    |
-
-### association
-has_many :items
