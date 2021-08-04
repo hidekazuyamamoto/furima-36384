@@ -1,18 +1,20 @@
 ## user
 
-| column                  | type                  | option                        |
-|-------------------------|-----------------------|-------------------------------|
-| nickname                | string                | nill:false                    |
-| email                   | string                | nill:false                    |
-| encrypted_password      | string                | nill:false                    |
-| first_name              | string                | nill:false                    |
-| last_name               | string                | nill:false                    |
-| birthday                | date                  | nill:false                    |
+| column                  | type                  | option                                     |
+|-------------------------|-----------------------|--------------------------------------------|
+| nickname                | string                | nill:false                                 |
+| email                   | string                | nill:false, unique: true                   |
+| encrypted_password      | string                | nill:false                                 |
+| first_name              | string                | nill:false                                 |
+| first_name_kana         | string                | nill:false, format: {with: /\A[ァ-ヶー]+\z/}|
+| last_name               | string                | nill:false                                 |
+| last_name               | string                | nill:false, format: {with: /\A[ァ-ヶー]+\z/}|
+| birthday                | date                  | nill:false                                 |
 
 ### association
 has_many :items
 has_many :comments
-has_many :purchased_log
+has_many :purchased_logs
 
 ## item
 | column                  | type                  | option                        |
@@ -20,7 +22,7 @@ has_many :purchased_log
 | name                    | string                | nill:false                    |
 | explanation             | text                  | nill:false                    |
 | price                   | integer               | nill:false                    |
-| user_id                 | references            | nill:false, foreign_key:true  |
+| user                    | references            | nill:false, foreign_key:true  |
 | area_id                 | integer               | nill:false                    |
 | category_id             | integer               | nill:false                    |
 | status_id               | integer               | nill:false                    |
@@ -40,8 +42,8 @@ belongs_to :days
 
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| user_id                 | references            | nill:false, foreign_key:true  |
-| items_id                | references            | nill:false, foreign_key:true  |
+| user                    | references            | nill:false, foreign_key:true  |
+| item                    | references            | nill:false, foreign_key:true  |
 
 ### association
 belongs_to :user
@@ -53,10 +55,10 @@ has_one :register
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
 | purchased_log_id        | references            | nill:false, foreign_key:true  |
-| postal_code             | integer               | nill:false                    |
+| postal_code             | string                | nill:false                    |
 | address                 | string                | nill:false                    |
 | building_name           | string                | nill:false                    |
-| telephone_number        | integer               | nill:false                    |
+| telephone_number        | string                | nill:false                    |
 | area_id                 | integer               | nill:false                    |
 
 ### association
@@ -68,8 +70,8 @@ belongs_to :area
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
 | comment                 | text                  | nill:false                    |
-| user_id                 | references            | nill:false, foreign_key:true  |
-| item_id                 | references            | nill:false, foreign_key:true  |
+| user                    | references            | nill:false, foreign_key:true  |
+| item                    | references            | nill:false, foreign_key:true  |
 
 ### association
 belongs_to :user
