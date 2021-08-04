@@ -45,7 +45,7 @@ has_one :purchased_log
 ### association
 belongs_to :user
 belongs_to :item
-has_one :registers
+has_one :register
 
 
 ## registers
