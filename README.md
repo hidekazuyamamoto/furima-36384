@@ -8,7 +8,7 @@
 | first_name              | string                | nill:false                                 |
 | first_name_kana         | string                | nill:false, format: {with: /\A[ァ-ヶー]+\z/}|
 | last_name               | string                | nill:false                                 |
-| last_name               | string                | nill:false, format: {with: /\A[ァ-ヶー]+\z/}|
+| last_name_kana          | string                | nill:false, format: {with: /\A[ァ-ヶー]+\z/}|
 | birthday                | date                  | nill:false                                 |
 
 ### association
