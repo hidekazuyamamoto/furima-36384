@@ -1,4 +1,4 @@
-## user
+## users
 
 | column                  | type                  | option                                     |
 |-------------------------|-----------------------|--------------------------------------------|
@@ -16,7 +16,7 @@ has_many :items
 has_many :comments
 has_many :purchased_logs
 
-## item
+## items
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
 | name                    | string                | null:false                    |
@@ -32,10 +32,10 @@ has_many :purchased_logs
 ### association
 belongs_to :user
 has_many :comments
-has_many :purchased_log
+has_one :purchased_log
 
 
-## purchased_log
+## purchased_logs
 
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
@@ -45,9 +45,10 @@ has_many :purchased_log
 ### association
 belongs_to :user
 belongs_to :item
+has_one :registers
 
 
-## register
+## registers
 
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
@@ -62,7 +63,7 @@ belongs_to :item
 ### association
 belongs_to :purchased_log
 
-## comment
+## comments
 
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
