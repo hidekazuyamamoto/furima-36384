@@ -7,5 +7,19 @@ class Item < ApplicationRecord
   belongs_to :statue
   belongs_to :postage
   belongs_to :days
+
+  with_options presence: true do
+    validates :name
+    validates :explanation
+    validates :price
+  end
+  
+  with_options numericality: { other_than: 1 } do
+    validates :area_id 
+    validates :category_id  
+    validates :status_id 
+    validates :postage_id 
+    validates :days_id 
+  end
   
 end
