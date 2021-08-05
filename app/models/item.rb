@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :area
   belongs_to :category
-  belongs_to :statue
+  belongs_to :status
   belongs_to :postage
   belongs_to :days
 
