@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, only: :new
+  before_action :authenticate_user!, only: [:new, :create]
   def index
     @item = Item.includes(:user).order('create_at DESC')
   end
@@ -9,12 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_paeams)
-    if @item.save
-      redirect_to root_path
-    else
-      render :new
-    end
+    Item.create(item_paeams)
   end
 
   private
@@ -24,9 +19,4 @@ class ItemsController < ApplicationController
                                   :days_id).merge(user_id: current_user.id)
   end
 
-  def move_to_index
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
-  end
 end
