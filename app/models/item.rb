@@ -13,15 +13,14 @@ class Item < ApplicationRecord
     validates :name
     validates :image
     validates :explanation
-    validates :price, numericality: { greater_than: 300, less_than:9999999}
+    validates :price, numericality: { greater_than: 300, less_than: 9_999_999 }
   end
 
   with_options numericality: { other_than: 1 } do
-    validates :area_id 
-    validates :category_id  
-    validates :status_id 
-    validates :postage_id 
-    validates :days_id 
+    validates :area_id
+    validates :category_id
+    validates :status_id
+    validates :postage_id
+    validates :days_id
   end
-  
 end
