@@ -15,10 +15,11 @@ class PurchasedsController < ApplicationController
       redirect_to root.path
     else
       render :new
+    end
   end
 
   private
   def params_purchased
-    params.require(:PurchasedOrde).permit(:postal_code, :city. :address, :building_name, :telephone_number, :area_id).merge(user_id: current_user.id)
+    params.require(:purchased_order).permit(:postal_code, :city, :address, :building_name, :telephone_number, :area_id).merge(user_id: current_user.id)
   end
 end
