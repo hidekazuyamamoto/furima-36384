@@ -7,6 +7,7 @@ class PurchasedOrder
     validates :city
     validates :address
     validates :telephone_number
+    validates :token
     with_options numericality:{ other_than: 0} do
       validates :area_id
     end
