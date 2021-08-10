@@ -2,21 +2,19 @@ class PurchasedsController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    @purchased_order = PurchasedOrder.new
+    @params_purchased = PurchasedOrder.new
   end
 
   def new
   end
   
   def create
-    binding.pry
     @params_purchased = PurchasedOrder.new(params_purchased)
     if @params_purchased.valid?
       @params_purchased.save
       redirect_to root_path
     else
       @item = Item.find(params[:item_id])
-      @purchased_order = PurchasedOrder.new
       render :index
     end
   end
