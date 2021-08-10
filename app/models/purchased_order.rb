@@ -1,6 +1,6 @@
 class PurchasedOrder
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :city, :address, :building_name, :telephone_number, :area_id
+  attr_accessor :user_id, :item_id, :postal_code, :city, :address, :building_name, :telephone_number, :area_id, :token
 
   with_options presence: true do
     validates :postal_code
@@ -13,7 +13,7 @@ class PurchasedOrder
   end
 
   def save 
-    purchased = Purchased.create(user_id: user_id, item_id: item_id)
+    purchased = Purchased.create(user_id: user_id, item_id: item_id, token: token)
     Order.create(purchased_id: purchased.id, postal_code: postal_code, city: city, address: address, building_name: building_name, telephone_number: telephone_number, area_id: area_id)
   end
 end
