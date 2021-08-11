@@ -4,7 +4,6 @@ function pay (){
   submit.addEventListener('click',(e) =>{
     e.preventDefault();
     const price = document.getElementsByClassName('item-payment-price')
-    const price_yen = price[0].innerHTML.substr(1)
     const form_result = document.getElementById("charge-form")
     const formData = new FormData(form_result)
     const card = {

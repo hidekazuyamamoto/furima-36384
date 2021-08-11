@@ -22,14 +22,14 @@ class PurchasedsController < ApplicationController
 
   private
   def params_purchased
-    params.require(:purchased_order).permit(:postal_code, :city, :address, :building_name, :telephone_number, :area_id).merge(item_id: params[:item_id],user_id: current_user.id, token: params[:token])
+    params.require(:purchased_order).permit(:postal_code, :city, :address, :building_name, :telephone_number, :area_id).merge(item_id: params[:item_id], item_price: Item.find(params[:item_id]).price,user_id: current_user.id, token: params[:token])
   end
   def pay_item
     Payjp.api_key = "sk_test_3fe0599d60ff16e49b632d78"  
     Payjp::Charge.create(
-      amount: order_params[:price],  
-      card: order_params[:token],    
-      currency: 'jpy'          
+      amount: params_purchased[:item_price],  
+      card: params_purchased[:token],    
+      currency: 'jpy'   
     )
   end
 end
