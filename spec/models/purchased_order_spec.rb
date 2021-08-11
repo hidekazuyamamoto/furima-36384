@@ -78,6 +78,11 @@ RSpec.describe PurchasedOrder, type: :model do
         @purchased_order.valid?
         expect(@purchased_order.errors.full_messages).to include("Telephone number is not a number")
       end
+      it '電話番号に半角数字以外が含まれている場合は購入できないこと' do
+        @purchased_order.telephone_number = "abc1234567"
+        @purchased_order.valid?
+        expect(@purchased_order.errors.full_messages).to include("Telephone number is not a number")
+      end
     end
   end
 end
