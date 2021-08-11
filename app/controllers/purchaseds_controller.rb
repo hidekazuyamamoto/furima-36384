@@ -1,5 +1,5 @@
 class PurchasedsController < ApplicationController
-
+  before_action :move_to_index, only: :index
   def index
     @item = Item.find(params[:item_id])
     @params_purchased = PurchasedOrder.new
@@ -31,5 +31,11 @@ class PurchasedsController < ApplicationController
       card: params_purchased[:token],    
       currency: 'jpy'   
     )
+  end
+  def move_to_index
+    @item = Item.find(params[:item_id])
+    unless @item.purchased == nil
+      redirect_to root_path
+    end
   end
 end
