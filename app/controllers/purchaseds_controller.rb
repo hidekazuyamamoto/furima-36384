@@ -1,4 +1,5 @@
 class PurchasedsController < ApplicationController
+  before_action :authenticate_user!, only: :index
   before_action :move_to_index, only: :index
   def index
     @item = Item.find(params[:item_id])
@@ -34,8 +35,12 @@ class PurchasedsController < ApplicationController
   end
   def move_to_index
     @item = Item.find(params[:item_id])
-    unless @item.purchased == nil
+    if @item.user.id == current_user.id 
       redirect_to root_path
+    else
+      unless @item.purchased == nil
+        redirect_to root_path
+      end
     end
   end
 end
