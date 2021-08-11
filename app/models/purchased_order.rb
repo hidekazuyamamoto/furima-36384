@@ -8,6 +8,8 @@ class PurchasedOrder
     validates :address
     validates :telephone_number, numericality: {only_integer: true}, length:{in:10..11}
     validates :token
+    validates :user_id
+    validates :item_id
     with_options numericality:{ other_than: 0} do
       validates :area_id
     end

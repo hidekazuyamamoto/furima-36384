@@ -12,8 +12,22 @@ RSpec.describe PurchasedOrder, type: :model do
       it '問題がなく記入できたら購入できる' do
         expect(@purchased_order).to be_valid
       end
+      it '建物名がなくても保存できる' do
+        @purchased_order.building_name = " "
+        expect(@purchased_order).to be_valid
+      end
     end
     context '購入できない場合' do
+      it 'user_idがないと保存できない' do
+        @purchased_order.user_id = nil
+        @purchased_order.valid?
+        expect(@purchased_order.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idがないと保存できない' do
+        @purchased_order.item_id = nil
+        @purchased_order.valid?
+        expect(@purchased_order.errors.full_messages).to include("Item can't be blank")
+      end
       it '郵便番号がない場合' do
         @purchased_order.postal_code = " "
         @purchased_order.valid?

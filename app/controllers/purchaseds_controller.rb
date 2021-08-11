@@ -1,8 +1,10 @@
 class PurchasedsController < ApplicationController
+
   before_action :authenticate_user!, only: :index
+  before_action :set_item
   before_action :move_to_index, only: :index
+
   def index
-    @item = Item.find(params[:item_id])
     @params_purchased = PurchasedOrder.new
   end
 
@@ -16,7 +18,6 @@ class PurchasedsController < ApplicationController
       @params_purchased.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
@@ -26,7 +27,7 @@ class PurchasedsController < ApplicationController
     params.require(:purchased_order).permit(:postal_code, :city, :address, :building_name, :telephone_number, :area_id).merge(item_id: params[:item_id], item_price: Item.find(params[:item_id]).price,user_id: current_user.id, token: params[:token])
   end
   def pay_item
-    Payjp.api_key = "sk_test_3fe0599d60ff16e49b632d78"  
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
     Payjp::Charge.create(
       amount: params_purchased[:item_price],  
       card: params_purchased[:token],    
@@ -34,7 +35,6 @@ class PurchasedsController < ApplicationController
     )
   end
   def move_to_index
-    @item = Item.find(params[:item_id])
     if @item.user.id == current_user.id 
       redirect_to root_path
     else
@@ -42,5 +42,8 @@ class PurchasedsController < ApplicationController
         redirect_to root_path
       end
     end
+  end
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
