@@ -64,12 +64,12 @@ RSpec.describe PurchasedOrder, type: :model do
         expect(@purchased_order.errors.full_messages).to include("Telephone number can't be blank")
       end
       it '電話番号が９桁の場合' do
-        @purchased_order.telephone_number = 123456789
+        @purchased_order.telephone_number = "123456789"
         @purchased_order.valid?
         expect(@purchased_order.errors.full_messages).to include("Telephone number is too short (minimum is 10 characters)")
       end
       it '電話番号が12桁の場合' do
-        @purchased_order.telephone_number = 123456789012
+        @purchased_order.telephone_number = "123456789012"
         @purchased_order.valid?
         expect(@purchased_order.errors.full_messages).to include("Telephone number is too long (maximum is 11 characters)")
       end

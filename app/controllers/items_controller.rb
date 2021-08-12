@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_item, except: [:index, :new, :create]
   before_action :move_to_index, only: [:edit, :update, :destory]
-  before_action :move_to_index_edit, only: :edit
+  before_action :move_to_index_purchased, only: [:edit, :update]
   def index
      @items = Item.includes(:user).order("created_at DESC")
   end
@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
-  def move_to_index_edit
+  def move_to_index_purchased
     unless @item.purchased == nil
       redirect_to root_path
     end

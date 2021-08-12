@@ -8,8 +8,6 @@ class PurchasedsController < ApplicationController
     @params_purchased = PurchasedOrder.new
   end
 
-  def new
-  end
   
   def create
     @params_purchased = PurchasedOrder.new(params_purchased)
@@ -24,7 +22,7 @@ class PurchasedsController < ApplicationController
 
   private
   def params_purchased
-    params.require(:purchased_order).permit(:postal_code, :city, :address, :building_name, :telephone_number, :area_id).merge(item_id: params[:item_id], item_price: Item.find(params[:item_id]).price,user_id: current_user.id, token: params[:token])
+    params.require(:purchased_order).permit(:postal_code, :city, :address, :building_name, :telephone_number, :area_id).merge(item_id: params[:item_id], item_price: @item.price,user_id: current_user.id, token: params[:token])
   end
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
@@ -38,7 +36,7 @@ class PurchasedsController < ApplicationController
     if @item.user.id == current_user.id 
       redirect_to root_path
     else
-      unless @item.purchased == nil
+      if @item.purchased.present?
         redirect_to root_path
       end
     end
