@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    id                   { 10}
     name                 { Faker::Name.name }
     explanation          { 'テスト' }
     price                { Faker::Number.between(from: 300, to: 9_999_999) }
