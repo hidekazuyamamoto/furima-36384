@@ -14,7 +14,7 @@
 ### association
 has_many :items
 has_many :comments
-has_many :purchased_logs
+has_many :purchased
 
 ## items
 | column                  | type                  | option                        |
@@ -32,10 +32,10 @@ has_many :purchased_logs
 ### association
 belongs_to :user
 has_many :comments
-has_one :purchased_log
+has_one :purchased
 
 
-## purchased_logs
+## purchased
 
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
@@ -45,14 +45,14 @@ has_one :purchased_log
 ### association
 belongs_to :user
 belongs_to :item
-has_one :register
+has_one :order
 
 
-## registers
+## orders
 
 | column                  | type                  | option                        |
 |-------------------------|-----------------------|-------------------------------|
-| purchased_log           | references            | null:false, foreign_key:true  |
+| purchased               | references            | null:false, foreign_key:true  |
 | postal_code             | string                | null:false                    |
 | city                    | string                | null:false                    |
 | address                 | string                | null:false                    |
