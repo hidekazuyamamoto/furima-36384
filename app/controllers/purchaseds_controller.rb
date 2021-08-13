@@ -22,12 +22,12 @@ class PurchasedsController < ApplicationController
 
   private
   def params_purchased
-    params.require(:purchased_order).permit(:postal_code, :city, :address, :building_name, :telephone_number, :area_id).merge(item_id: params[:item_id], user_id: current_user.id, token: params[:token])
+    params.require(:purchased_order).permit(:postal_code, :city, :address, :building_name, :telephone_number, :area_id).merge(item_id: params[:item_id], item_price: @item.price,user_id: current_user.id, token: params[:token])
   end
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
     Payjp::Charge.create(
-      amount: params_purchased[@item.price],  
+      amount: params_purchased[:item_price],  
       card: params_purchased[:token],    
       currency: 'jpy'   
     )
@@ -36,7 +36,7 @@ class PurchasedsController < ApplicationController
     if @item.user.id == current_user.id 
       redirect_to root_path
     elsif @item.purchased.present?
-      redirect_to root_path
+        redirect_to root_path
     end
   end
   def set_item
