@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create, :search]
   before_action :move_to_index, only: [:edit, :update, :destory]
   before_action :move_to_index_purchased, only: [:edit, :update, :destroy]
   def index
@@ -24,6 +24,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
+  end
+
+  def search
+    @items = Item.search(params[:keyword])
   end
 
   def update
