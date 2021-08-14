@@ -91,12 +91,12 @@
     </form>
   </div>
   <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
+    <% if Item.where(id: Float::MIN..@item.id-1).any?%>
+      <%= link_to "前に出品された商品 ＞", item_path(@item_back.id), class:"change-item-right-btn " %>
+    <% end %>
+    <% if Item.where(id: @item.id+1..Float::INFINITY).any?%>
+      <%= link_to "＜ 後に出品された商品", item_path(@item_next.id), class:"change-item-left-btn" %>
+    <% end %>
   </div>
   <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
 </div>

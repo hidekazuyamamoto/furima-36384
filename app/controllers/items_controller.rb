@@ -21,6 +21,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item_back = Item.where("id < ?", params[:id]).order("id DESC").first
+    @item_next = Item.where("id > ?", params[:id]).order("id ASC").first
   end
 
   def edit

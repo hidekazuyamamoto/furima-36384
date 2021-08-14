@@ -186,17 +186,28 @@
 
 .links {
   display: flex;
-  justify-content: space-between;
+  position: relative;
   width: 50vw;
+  height: 30px;
 
 }
 
-.change-item-btn {
+.change-item-left-btn {
   font-size: 30px;
   text-decoration: none;
+  position: absolute;
+  left: 0px;
   color: #3CCACE;
-}
 
+}
+.change-item-right-btn {
+  font-size: 30px;
+  text-decoration: none;
+  position: absolute;
+  right: 0px;
+  color: #3CCACE;
+  
+}
 .another-item {
   display: block;
   margin: 30px 0px 8px;
