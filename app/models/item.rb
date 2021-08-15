@@ -25,11 +25,18 @@ class Item < ApplicationRecord
     validates :postage_id
     validates :days_id
   end
-  def self.search(search)
+  def self.search_name(search)
     if search != ""
       Item.where('name LIKE(?)', "%#{search}%")
     else
       Item.all
+    end
+    def self.search_category(search)
+      if search != ""
+        Item.where('category_id', search)
+      else
+        Item.all
+      end
     end
   end
 end

@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     resources :purchaseds, only: [:index, :create]
     resources :likes, only: [:create, :destroy]
     collection do
-      get 'search'
+      get 'search_name'
+      get 'search_category'
     end
   end
   

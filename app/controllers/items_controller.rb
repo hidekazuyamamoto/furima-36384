@@ -32,7 +32,8 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:keyword])
+    @items_name = Item.search_name(params[:keyword])
+    @items_category = Item.search_category(params[:category_id])
   end
 
   def update
