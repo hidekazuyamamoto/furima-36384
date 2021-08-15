@@ -3,15 +3,15 @@
   <div class='search-bar-contents'>
     <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
     <div class='search_form'>
-     <ul class='lists-left'>
-      <li class='list'><%= link_to '名前で検索する', class: "name-list" %></li>
-      <li class='list'><%= link_to 'カテゴリーで検索する', class: "category-list" %></li>
+     <ul class = "lists-left" id='lists-left'>
+      <li class = "list-name" id='list-name'>名前で検索する</li>
+      <li class ="list-category" id='list-category' >カテゴリーで検索する</li>
     </ul>
-      <%= form_with(url: search_name_items_path, local: true, method: :get, class: "search-form-name" ) do |form| %>
+      <%= form_with(url: search_name_items_path, local: true, method: :get, class:"search-form-name ", id:"search-form-name") do |form| %>
       <%= form.text_field :keyword, placeholder: "商品名で検索する", class: 'input-box-name' %>
       <%= image_submit_tag("search.png", class: "search-button") %>
       <% end %>
-      <%= form_with(url: search_category_items_path, local: true, method: :get, class: "search-form-category hidden" ) do |form| %>
+      <%= form_with(url: search_category_items_path, local: true, method: :get,class:"search-form-category hidden", id:"search-form-category") do |form| %>
       <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class:"input-box-category", id:"item-category"}) %>
       <%= image_submit_tag("search.png", class: "search-button") %>
       <% end %>

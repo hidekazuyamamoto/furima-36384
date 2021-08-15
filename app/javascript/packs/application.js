@@ -7,8 +7,9 @@ require("@rails/ujs").start()
 // require("turbolinks").start() //この行を削除する
 require("@rails/activestorage").start()
 require("channels")
-require("../postage_calc")
-require("../card")
+// require("../postage_calc")
+// require("../card")
+require("../search.js")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
