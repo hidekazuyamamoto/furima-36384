@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   def show
     @item_back = Item.where("id < ?", params[:id]).order("id DESC").first
     @item_next = Item.where("id > ?", params[:id]).order("id ASC").first
+    @like = Like.where(item_id: params[:id]).length
   end
 
   def edit
