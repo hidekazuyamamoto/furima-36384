@@ -5,7 +5,8 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.destroy
+    @like = Like.find(params[:id])
+    @like.destroy
     redirect_to item_path(params[:item_id])
   end
   

@@ -65,9 +65,16 @@
     </table>
     <div class="option">
       <div class="favorite-btn">
-        <%= link_to item_likes_path(@item.id) , method: :post do %>
-        <%= image_tag"star.png" ,class:"favorite-star-icon" ,width:"20",height:"20" %>
-        <span>お気に入り <%= @like %> </span>
+      <% if current_user.liked_by?(@item.id) %>
+          <%= link_to "/items/#{@item.id}/likes/#{@like.id}" , method: :DELETE do %>
+          <%= image_tag("star.png" ,class:"favorite-star-icon" ,width:"20",height:"20") %>
+          <span>お気に入りを外す <%= @like_count %> </span>
+          <% end %>
+      <% else %>
+          <%= link_to "/items/#{@item.id}/likes" , method: :post do %>
+          <%= image_tag("star.png" ,class:"favorite-star-icon" ,width:"20",height:"20") %>
+          <span>お気に入り <%= @like_count %> </span>
+          <% end %>
         <% end %>
       </div> 
       
