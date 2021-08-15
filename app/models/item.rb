@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :days
 
   belongs_to :user
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_one_attached :image, dependent: :destroy
   has_one :purchased
 
