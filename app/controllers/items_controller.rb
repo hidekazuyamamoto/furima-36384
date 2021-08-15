@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_item, except: [:index, :new, :create, :search]
+  before_action :set_item, except: [:index, :new, :create, :search, :search_name, :search_category]
   before_action :move_to_index, only: [:edit, :update, :destory]
   before_action :move_to_index_purchased, only: [:edit, :update, :destroy]
   def index
@@ -31,8 +31,11 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  def search
+  def search_name
     @items_name = Item.search_name(params[:keyword])
+  end
+  def search_category
+    binding.pry
     @items_category = Item.search_category(params[:category_id])
   end
 
