@@ -35,7 +35,6 @@ class ItemsController < ApplicationController
     @items_name = Item.search_name(params[:keyword])
   end
   def search_category
-    binding.pry
     @items_category = Item.search_category(params[:category_id])
   end
 
